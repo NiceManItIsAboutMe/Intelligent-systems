@@ -24,7 +24,7 @@ using lab1_alpha_beta_algorithm_X_0_v3;
     }
 
 Game game = new Game(AI, human);
-Console.WriteLine(game);
+//Console.WriteLine(game);
 while (true)
 {
     if (AI == 10)
@@ -34,6 +34,7 @@ while (true)
         {
             Console.Clear();
             Console.WriteLine(game);
+            Console.ReadLine();
             break;
         }
         Console.WriteLine(game);
@@ -56,14 +57,15 @@ while (true)
         {
             Console.Clear();
             Console.WriteLine(game);
+            Console.ReadLine();
             break;
         }
         Console.Clear();
-        Console.WriteLine(game);
+       // Console.WriteLine(game);
     }
     else
     {
-        
+        Console.WriteLine(game);
         while (true)
         {
             Console.WriteLine("Введите клетку на которую хотите походить: ");
@@ -83,19 +85,22 @@ while (true)
         {
             Console.Clear();
             Console.WriteLine(game);
+            Console.ReadLine();
             break;
         }
-        Console.Clear();
-        Console.WriteLine(game);
+        
+        //Console.WriteLine(game);
 
         game.MoveAI();
         if (game.IsEnd())
         {
             Console.Clear();
             Console.WriteLine(game);
+            Console.ReadLine();
             break;
         }
-        Console.WriteLine(game);
+        Console.Clear();
+        //Console.WriteLine(game);
     }
 
 }
