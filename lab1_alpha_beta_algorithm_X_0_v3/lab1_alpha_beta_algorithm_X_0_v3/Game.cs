@@ -8,7 +8,7 @@ namespace lab1_alpha_beta_algorithm_X_0_v3
 {
     internal class Game
     {
-        List<int> gameBoard;
+        public List<int> gameBoard;
 
         int whoWin = -1;
         int AI;
@@ -96,7 +96,7 @@ namespace lab1_alpha_beta_algorithm_X_0_v3
             if (whoWin == 0)
                 res += "\nЛегкая игра, ничья, но даже не думай о ней в следующий раз!";
             else if (whoWin == AI)
-                res += "\nГений победил, и это не ты";
+                res += "\nГений победил, и это не ты\n PS а я говорил куда ходить...";
             else if (whoWin == Human)
                 res += "\nВ этот раз тебе повезло, сдаюсь";
 

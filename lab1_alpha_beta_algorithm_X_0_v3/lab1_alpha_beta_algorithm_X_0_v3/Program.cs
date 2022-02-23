@@ -3,6 +3,8 @@ using lab1_alpha_beta_algorithm_X_0_v3;
 
 
     string read;
+do
+{
     int AI = 10;
     int human = -10;
     while (true)
@@ -23,87 +25,95 @@ using lab1_alpha_beta_algorithm_X_0_v3;
         }
     }
 
-Game game = new Game(AI, human);
-//Console.WriteLine(game);
-while (true)
-{
-    if (AI == 10)
+    Game game = new Game(AI, human);
+    //Console.WriteLine(game);
+    while (true)
     {
-        game.MoveAI();
-        if (game.IsEnd())
+        if (AI == 10)
         {
-            Console.Clear();
-            Console.WriteLine(game);
-            Console.ReadLine();
-            break;
-        }
-        Console.WriteLine(game);
-        while (true) 
-        {
-            Console.WriteLine("Введите клетку на которую хотите походить: ");
-            read = Console.ReadLine();
-            int tmp=0;
-            if (int.TryParse(read, out tmp)) 
+            game.MoveAI();
+            if (game.IsEnd())
             {
-                if (game.MoveHuman(int.Parse(read)))
-                    break;
-                else
-                    Console.WriteLine("Данная клетка занята или не существует");
+                Console.Clear();
+                Console.WriteLine(game);
+               // Console.ReadLine();
+                break;
             }
-            else
-                Console.WriteLine("Некоректный ввод");
-        }
-        if (game.IsEnd())
-        {
-            Console.Clear();
             Console.WriteLine(game);
-            Console.ReadLine();
-            break;
-        }
-        Console.Clear();
-       // Console.WriteLine(game);
-    }
-    else
-    {
-        Console.WriteLine(game);
-        while (true)
-        {
-            Console.WriteLine("Введите клетку на которую хотите походить: ");
-            read = Console.ReadLine();
-            int tmp = 0;
-            if (int.TryParse(read, out tmp))
+            Tree tree = new Tree(game.gameBoard, human, AI);
+            Console.WriteLine("Разработчик считает, что для вас лучше всего походить на " + (tree.BestMove() + 1));
+            while (true)
             {
-                if (game.MoveHuman(int.Parse(read)))
-                    break;
+                Console.WriteLine("Введите клетку на которую хотите походить: ");
+                read = Console.ReadLine();
+                int tmp = 0;
+                if (int.TryParse(read, out tmp))
+                {
+                    if (game.MoveHuman(int.Parse(read)))
+                        break;
+                    else
+                        Console.WriteLine("Данная клетка занята или не существует");
+                }
                 else
-                    Console.WriteLine("Данная клетка занята или не существует");
+                    Console.WriteLine("Некоректный ввод");
             }
-            else
-                Console.WriteLine("Некоректный ввод");
-        }
-        if (game.IsEnd())
-        {
+            if (game.IsEnd())
+            {
+                Console.Clear();
+                Console.WriteLine(game);
+               // Console.ReadLine();
+                break;
+            }
             Console.Clear();
-            Console.WriteLine(game);
-            Console.ReadLine();
-            break;
+            // Console.WriteLine(game);
         }
-        
-        //Console.WriteLine(game);
+        else
+        {
+            Console.WriteLine(game);
+            Tree tree = new Tree(game.gameBoard, human, AI);
+            Console.WriteLine("Разработчик считает, что для вас лучше всего походить на " + (tree.BestMove() + 1));
+            while (true)
+            {
+                Console.WriteLine("Введите клетку на которую хотите походить: ");
+                read = Console.ReadLine();
+                int tmp = 0;
+                if (int.TryParse(read, out tmp))
+                {
+                    if (game.MoveHuman(int.Parse(read)))
+                        break;
+                    else
+                        Console.WriteLine("Данная клетка занята или не существует");
+                }
+                else
+                    Console.WriteLine("Некоректный ввод");
+            }
+            if (game.IsEnd())
+            {
+                Console.Clear();
+                Console.WriteLine(game);
+               // Console.ReadLine();
+                break;
+            }
 
-        game.MoveAI();
-        if (game.IsEnd())
-        {
+            //Console.WriteLine(game);
+
+            game.MoveAI();
+            if (game.IsEnd())
+            {
+                Console.Clear();
+                Console.WriteLine(game);
+                //Console.ReadLine();
+                break;
+            }
             Console.Clear();
-            Console.WriteLine(game);
-            Console.ReadLine();
-            break;
+            //Console.WriteLine(game);
         }
-        Console.Clear();
-        //Console.WriteLine(game);
+
     }
-
-}
+    Console.WriteLine("Хотите попробовать еще раз? Жми ввод!\n Чтобы выйти введите exit или закройте окно.");
+    read = Console.ReadLine();
+    Console.Clear();
+} while (read!="exit");
 
 
 
